@@ -1,8 +1,17 @@
 import streamlit as st
 import requests
 
-st.set_page_config(page_title="NurseGame RAG Chat", layout="wide")
-st.title("🩺 NurseGame Patient Chat")
+st.set_page_config(page_title="NurseAI Chat", layout="wide")
+
+st.markdown(
+    """
+    # 🩺 NurseAI Chat
+    
+    **Welcome to the AI Nurse Assistant!**
+    
+    This chat simulates a nurse assistant for non-real patients, powered by AI. All patient charts and data are fictional and generated for educational or demonstration purposes. The responses are powered by OpenAI's gpt-3.5-turbo.
+    """
+)
 
 patient_id = st.sidebar.selectbox("Select Patient", [f"patient{i}" for i in range(1, 9)])
 
