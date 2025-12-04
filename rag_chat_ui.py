@@ -3,15 +3,20 @@ import requests
 
 st.set_page_config(page_title="NurseAI Chat", layout="wide")
 
-st.markdown(
-    """
-    # 🩺 NurseAI Chat
+with st.expander("ℹ️ About This Demo", expanded=True):
+    st.markdown("""
+    ### 👋 Welcome!
     
-    **Welcome to the AI Nurse Assistant!**
+    This is a **legacy version** of an AI nurse assistant, originally developed for a separate project.
     
-    This chat simulates a nurse assistant for non-real patients, powered by AI. All patient charts and data are fictional and generated for educational or demonstration purposes. The responses are powered by OpenAI's gpt-3.5-turbo.
-    """
-)
+    **📋 Important Information:**
+    - 🎯 **Demo Purpose**: This deployment is for demonstration and testing purposes only
+    - 🏥 **Synthetic Data**: All patient data is **not real** and is generated for demonstration
+    - 🔒 **Privacy Protected**: There is **no PII (Personally Identifiable Information)** in this system
+    - ⚠️ **Not for Medical Use**: This tool should not be used for actual medical diagnosis or treatment
+    
+    Select a patient from the sidebar and start asking questions to explore the AI assistant's capabilities!
+    """)
 
 patient_id = st.sidebar.selectbox("Select Patient", [f"patient{i}" for i in range(1, 9)])
 
@@ -32,7 +37,7 @@ if user_input:
     try:
         response = requests.post(
             # "http://localhost:8000/ask",
-            "https://nursegame-chat-backend.onrender.com/ask",
+            "https://nurse-ai-assistant.onrender.com/ask",
             json={"question": user_input, "patient_id": patient_id},
             timeout=10
         )
